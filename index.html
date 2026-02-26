@@ -1,1 +1,96 @@
-<h1>Martech Daily 资讯站正在建设中...</h1>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martech 每日简报</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 40px 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { color: #fff; font-size: 2.5em; font-weight: 700; margin-bottom: 10px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .header .date { color: rgba(255,255,255,0.9); font-size: 1.1em; }
+        .news-list { display: flex; flex-direction: column; gap: 20px; }
+        .news-item { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .news-item:hover { transform: translateY(-4px); box-shadow: 0 15px 50px rgba(0,0,0,0.2); }
+        .news-item h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 12px; line-height: 1.4; }
+        .news-item .summary { color: #4a4a6a; line-height: 1.7; margin-bottom: 16px; }
+        .news-item .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .news-item .tag { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; }
+        .news-item .source { color: #888; font-size: 0.9em; }
+        .news-item .source a { color: #667eea; text-decoration: none; }
+        .news-item .source a:hover { text-decoration: underline; }
+        .footer { text-align: center; margin-top: 40px; color: rgba(255,255,255,0.7); font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Martech 每日简报</h1>
+            <p class="date">2026年2月26日 · 星期三</p>
+        </div>
+        
+        <div class="news-list">
+            <div class="news-item">
+                <h3>2026年"亚洲科技变革"峰会将于3月在港举办</h3>
+                <p class="summary">经济学人影响力将于2026年3月11日至12日在香港举办"Technology for Change Asia 2026"峰会，汇聚超过700位政商界代表。议程将聚焦人工智能时代的务实应用，探讨亚洲监管差异、自主智能体规模化应用、大湾区创新生态系统机遇及智慧出行技术对全球供应链的影响。</p>
+                <div class="tags">
+                    <span class="tag">AI</span>
+                    <span class="tag">Martech</span>
+                    <span class="tag">峰会</span>
+                </div>
+                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061137.html" target="_blank">查看原文</a></p>
+            </div>
+
+            <div class="news-item">
+                <h3>一财社论：与AI共舞是迎接未来的最好方式</h3>
+                <p class="summary">Anthropic推出Claude Code及面向Claude Coworker智能体的多款插件，明确AI Agent的合作而非替代者身份。市场分析认为，将AI定位为合作伙伴是通往未来的门票，一人+AI将成为未来常态化的经济社会活动单元。学会科学提问、科学准确表达，将成为人最核心的竞争力。</p>
+                <div class="tags">
+                    <span class="tag">AI</span>
+                    <span class="tag">AdTech</span>
+                    <span class="tag">SaaS</span>
+                </div>
+                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061056.html" target="_blank">查看原文</a></p>
+            </div>
+
+            <div class="news-item">
+                <h3>中国制造业智能化转型加快：2025年数字化改造比例达89.6%</h3>
+                <p class="summary">中国信通院报告显示，截至2025年12月底，全国规上工业企业数字化改造比例达89.6%，数字化生产设备普及率达57.7%。汽车、船舶和电子信息制造业数字化改造企业比例最高，分别达94.4%、94.2%和93.9%。"人工智能+制造"加快实施，2025年制造业企业采购数字技术金额同比增长10.4%。</p>
+                <div class="tags">
+                    <span class="tag">智能制造</span>
+                    <span class="tag">数字化</span>
+                    <span class="tag">Martech</span>
+                </div>
+                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061013.html" target="_blank">查看原文</a></p>
+            </div>
+
+            <div class="news-item">
+                <h3>银行贵金属业务杠杆持续收紧：多家银行保证金比例提至100%</h3>
+                <p class="summary">农业银行、工商银行、建设银行等多家银行再度上调代理上金所贵金属业务保证金比例，部分银行已将杠杆倍数调降至1倍。继去年以来，各银行在监管引导下已大幅削减贵金属相关业务，多数机构暂停新开户和新开仓，存量业务办理渠道也在持续收缩。</p>
+                <div class="tags">
+                    <span class="tag">支付科技</span>
+                    <span class="tag">金融科技</span>
+                    <span class="tag">风险管控</span>
+                </div>
+                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061047.html" target="_blank">查看原文</a></p>
+            </div>
+
+            <div class="news-item">
+                <h3>降糖减重口服GLP-1竞争白热化：礼来新药疗效领先</h3>
+                <p class="summary">礼来与诺和诺德在口服GLP-1降糖减重领域展开激烈竞争。礼来口服新药在疗效上领先PK口服司美格鲁肽，诺和诺德则在中美市场采取降价应对策略。这一领域的技术创新正在重塑医疗健康市场的竞争格局。</p>
+                <div class="tags">
+                    <span class="tag">医疗科技</span>
+                    <span class="tag">创新药</span>
+                    <span class="tag">支付科技</span>
+                </div>
+                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061150.html" target="_blank">查看原文</a></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>每日8:00更新 · 聚焦Martech、AdTech、支付科技前沿动态</p>
+        </div>
+    </div>
+</body>
+</html>
