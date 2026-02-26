@@ -3,94 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martech 每日简报</title>
+    <title>MarTech Hub - 营销科技前沿</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 40px 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); 
+            min-height: 100vh; 
+            padding: 40px 20px; 
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        /* Header */
         .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { color: #fff; font-size: 2.5em; font-weight: 700; margin-bottom: 10px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        .header .date { color: rgba(255,255,255,0.9); font-size: 1.1em; }
-        .news-list { display: flex; flex-direction: column; gap: 20px; }
-        .news-item { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .news-item:hover { transform: translateY(-4px); box-shadow: 0 15px 50px rgba(0,0,0,0.2); }
-        .news-item h3 { color: #1a1a2e; font-size: 1.3em; margin-bottom: 12px; line-height: 1.4; }
+        .header h1 { color: #fff; font-size: 2.5em; font-weight: 700; margin-bottom: 10px; }
+        .header .subtitle { color: rgba(255,255,255,0.85); font-size: 1.1em; margin-bottom: 20px; }
+        .nav { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .nav-btn { 
+            background: rgba(255,255,255,0.2); color: #fff; border: none; 
+            padding: 10px 20px; border-radius: 25px; cursor: pointer; 
+            font-size: 0.95em; transition: all 0.3s; 
+        }
+        .nav-btn:hover, .nav-btn.active { background: #fff; color: var(--primary); }
+        
+        /* Sections */
+        .section { display: none; }
+        .section.active { display: block; }
+        .section-title { 
+            color: #fff; font-size: 1.8em; margin-bottom: 24px; 
+            display: flex; align-items: center; gap: 12px;
+        }
+        .section-title::before { 
+            content: ''; width: 6px; height: 28px; 
+            background: #fff; border-radius: 3px; 
+        }
+        
+        /* Cards */
+        .card-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 20px; 
+        }
+        .card { 
+            background: #fff; border-radius: 16px; padding: 24px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 15px 50px rgba(0,0,0,0.2); }
+        
+        /* News Items */
+        .news-item { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        .news-item h3 { color: var(--dark); font-size: 1.3em; margin-bottom: 12px; line-height: 1.4; }
         .news-item .summary { color: #4a4a6a; line-height: 1.7; margin-bottom: 16px; }
         .news-item .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-        .news-item .tag { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; }
-        .news-item .source { color: #888; font-size: 0.9em; }
-        .news-item .source a { color: #667eea; text-decoration: none; }
-        .news-item .source a:hover { text-decoration: underline; }
+        .news-item .tag { 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; 
+        }
+        .news-item .source { color: var(--gray); font-size: 0.9em; }
+        .news-item .source a { color: var(--primary); text-decoration: none; }
+        
+        /* Analysis Cards */
+        .analysis-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        .analysis-card .category { 
+            color: var(--primary); font-size: 0.85em; font-weight: 600; 
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; 
+        }
+        .analysis-card h3 { color: var(--dark); font-size: 1.4em; margin-bottom: 12px; }
+        .analysis-card .excerpt { color: #4a4a6a; line-height: 1.7; margin-bottom: 16px; }
+        .analysis-card .meta { display: flex; justify-content: space-between; color: var(--gray); font-size: 0.85em; }
+        
+        /* Tools Grid */
+        .tool-card { background: #fff; border-radius: 16px; padding: 24px; text-align: center; }
+        .tool-card .icon { font-size: 3em; margin-bottom: 16px; }
+        .tool-card h3 { color: var(--dark); font-size: 1.2em; margin-bottom: 8px; }
+        .tool-card p { color: var(--gray); font-size: 0.9em; line-height: 1.6; margin-bottom: 16px; }
+        .tool-card .rating { color: #ffc107; margin-bottom: 12px; }
+        .tool-card .btn { 
+            display: inline-block; background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: #fff; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-size: 0.9em; 
+        }
+        
+        /* Case Study */
+        .case-card { background: #fff; border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        .case-card .case-header { 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: #fff; padding: 20px 24px; 
+        }
+        .case-card .case-header h3 { font-size: 1.3em; }
+        .case-card .case-header .industry { opacity: 0.9; font-size: 0.9em; margin-top: 4px; }
+        .case-card .case-body { padding: 24px; }
+        .case-card .case-body h4 { color: var(--dark); font-size: 1em; margin: 16px 0 8px; }
+        .case-card .case-body h4:first-child { margin-top: 0; }
+        .case-card .case-body p { color: #4a4a6a; line-height: 1.7; font-size: 0.95em; }
+        
+        /* Report Card */
+        .report-card { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 16px; display: flex; gap: 20px; align-items: flex-start; }
+        .report-card .report-icon { 
+            font-size: 2.5em; background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        }
+        .report-card h3 { color: var(--dark); font-size: 1.2em; margin-bottom: 8px; }
+        .report-card .publisher { color: var(--gray); font-size: 0.85em; margin-bottom: 8px; }
+        .report-card p { color: #4a4a6a; font-size: 0.9em; line-height: 1.6; }
+        
+        /* Footer */
         .footer { text-align: center; margin-top: 40px; color: rgba(255,255,255,0.7); font-size: 0.9em; }
+        .footer a { color: #fff; }
+        
+        /* Date display */
+        .date-display { color: rgba(255,255,255,0.9); font-size: 1em; margin-top: 8px; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Martech 每日简报</h1>
-            <p class="date">2026年2月26日 · 星期三</p>
+            <h1>MarTech Hub</h1>
+            <p class="subtitle">营销科技前沿 · 深度洞察与行业报告</p>
+            <p class="date-display">2026年2月27日 · 星期五</p>
+            
+            <div class="nav" style="margin-top: 24px;">
+                <button class="nav-btn active" onclick="showSection('daily')">每日简报</button>
+                <button class="nav-btn" onclick="showSection('analysis')">深度分析</button>
+                <button class="nav-btn" onclick="showSection('tools')">工具测评</button>
+                <button class="nav-btn" onclick="showSection('cases')">案例研究</button>
+                <button class="nav-btn" onclick="showSection('reports')">行业报告</button>
+            </div>
         </div>
         
-        <div class="news-list">
-            <div class="news-item">
-                <h3>2026年"亚洲科技变革"峰会将于3月在港举办</h3>
-                <p class="summary">经济学人影响力将于2026年3月11日至12日在香港举办"Technology for Change Asia 2026"峰会，汇聚超过700位政商界代表。议程将聚焦人工智能时代的务实应用，探讨亚洲监管差异、自主智能体规模化应用、大湾区创新生态系统机遇及智慧出行技术对全球供应链的影响。</p>
-                <div class="tags">
-                    <span class="tag">AI</span>
-                    <span class="tag">Martech</span>
-                    <span class="tag">峰会</span>
+        <!-- 每日简报 -->
+        <div id="daily" class="section active">
+            <div class="news-list">
+                <div class="news-item">
+                    <h3>2026年"亚洲科技变革"峰会将于3月在港举办</h3>
+                    <p class="summary">经济学人影响力将于2026年3月11日至12日在香港举办"Technology for Change Asia 2026"峰会，汇聚超过700位政商界代表。议程将聚焦人工智能时代的务实应用。</p>
+                    <div class="tags"><span class="tag">AI</span><span class="tag">Martech</span><span class="tag">峰会</span></div>
+                    <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061137.html" target="_blank">查看原文</a></p>
                 </div>
-                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061137.html" target="_blank">查看原文</a></p>
-            </div>
 
-            <div class="news-item">
-                <h3>一财社论：与AI共舞是迎接未来的最好方式</h3>
-                <p class="summary">Anthropic推出Claude Code及面向Claude Coworker智能体的多款插件，明确AI Agent的合作而非替代者身份。市场分析认为，将AI定位为合作伙伴是通往未来的门票，一人+AI将成为未来常态化的经济社会活动单元。学会科学提问、科学准确表达，将成为人最核心的竞争力。</p>
-                <div class="tags">
-                    <span class="tag">AI</span>
-                    <span class="tag">AdTech</span>
-                    <span class="tag">SaaS</span>
+                <div class="news-item">
+                    <h3>一财社论：与AI共舞是迎接未来的最好方式</h3>
+                    <p class="summary">Anthropic推出Claude Code及面向Claude Coworker智能体的多款插件，明确AI Agent的合作而非替代者身份。</p>
+                    <div class="tags"><span class="tag">AI</span><span class="tag">AdTech</span><span class="tag">SaaS</span></div>
+                    <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061056.html" target="_blank">查看原文</a></p>
                 </div>
-                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061056.html" target="_blank">查看原文</a></p>
-            </div>
 
-            <div class="news-item">
-                <h3>中国制造业智能化转型加快：2025年数字化改造比例达89.6%</h3>
-                <p class="summary">中国信通院报告显示，截至2025年12月底，全国规上工业企业数字化改造比例达89.6%，数字化生产设备普及率达57.7%。汽车、船舶和电子信息制造业数字化改造企业比例最高，分别达94.4%、94.2%和93.9%。"人工智能+制造"加快实施，2025年制造业企业采购数字技术金额同比增长10.4%。</p>
-                <div class="tags">
-                    <span class="tag">智能制造</span>
-                    <span class="tag">数字化</span>
-                    <span class="tag">Martech</span>
+                <div class="news-item">
+                    <h3>中国制造业智能化转型加快：2025年数字化改造比例达89.6%</h3>
+                    <p class="summary">中国信通院报告显示，截至2025年12月底，全国规上工业企业数字化改造比例达89.6%。</p>
+                    <div class="tags"><span class="tag">智能制造</span><span class="tag">数字化</span><span class="tag">Martech</span></div>
+                    <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061013.html" target="_blank">查看原文</a></p>
                 </div>
-                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061013.html" target="_blank">查看原文</a></p>
-            </div>
-
-            <div class="news-item">
-                <h3>银行贵金属业务杠杆持续收紧：多家银行保证金比例提至100%</h3>
-                <p class="summary">农业银行、工商银行、建设银行等多家银行再度上调代理上金所贵金属业务保证金比例，部分银行已将杠杆倍数调降至1倍。继去年以来，各银行在监管引导下已大幅削减贵金属相关业务，多数机构暂停新开户和新开仓，存量业务办理渠道也在持续收缩。</p>
-                <div class="tags">
-                    <span class="tag">支付科技</span>
-                    <span class="tag">金融科技</span>
-                    <span class="tag">风险管控</span>
-                </div>
-                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061047.html" target="_blank">查看原文</a></p>
-            </div>
-
-            <div class="news-item">
-                <h3>降糖减重口服GLP-1竞争白热化：礼来新药疗效领先</h3>
-                <p class="summary">礼来与诺和诺德在口服GLP-1降糖减重领域展开激烈竞争。礼来口服新药在疗效上领先PK口服司美格鲁肽，诺和诺德则在中美市场采取降价应对策略。这一领域的技术创新正在重塑医疗健康市场的竞争格局。</p>
-                <div class="tags">
-                    <span class="tag">医疗科技</span>
-                    <span class="tag">创新药</span>
-                    <span class="tag">支付科技</span>
-                </div>
-                <p class="source">来源：第一财经 · <a href="https://www.yicai.com/news/103061150.html" target="_blank">查看原文</a></p>
             </div>
         </div>
-
+        
+        <!-- 深度分析 -->
+        <div id="analysis" class="section">
+            <h2 class="section-title">深度分析</h2>
+            
+            <div class="analysis-card">
+                <div class="category">AI & Agent</div>
+                <h3>2026年：AI Agent 元年</h3>
+                <p class="excerpt">从Claude Code到GPTs，AI Agent正在重新定义人机协作模式。本文分析三大主流AI Agent平台的能力边界与最佳应用场景。</p>
+                <div class="meta"><span>2026-02-27</span><span>阅读时长: 8分钟</span></div>
+            </div>
+            
+            <div class="analysis-card">
+                <div class="category">Martech 趋势</div>
+                <h3>中国Martech市场格局深度解读</h3>
+                <p class="excerpt">从CRM到CDP，从营销自动化到私域运营，详解中国Martech生态的演进路径与未来机会点。</p>
+                <div class="meta"><span>2026-02-25</span><span>阅读时长: 12分钟</span></div>
+            </div>
+            
+            <div class="analysis-card">
+                <div class="category">数据隐私</div>
+                <h3>隐私计算：下一阶段营销科技的基础设施</h3>
+                <p class="excerpt">随着第三方Cookie退出，隐私计算技术正在成为营销数据打通的核心方案。深度解读联邦学习、差分隐私等技术落地进展。</p>
+                <div class="meta"><span>2026-02-20</span><span>阅读时长: 10分钟</span></div>
+            </div>
+        </div>
+        
+        <!-- 工具测评 -->
+        <div id="tools" class="section">
+            <h2 class="section-title">工具测评</h2>
+            
+            <div class="card-grid">
+                <div class="tool-card">
+                    <div class="icon">🤖</div>
+                    <h3>Claude Code</h3>
+                    <p>AI编程助手，适合开发者与自动化工作流</p>
+                    <div class="rating">★★★★★</div>
+                    <a href="#" class="btn">查看评测</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="icon">📧</div>
+                    <h3>HubSpot</h3>
+                    <p>一体化营销平台，CRM与营销自动化结合</p>
+                    <div class="rating">★★★★☆</div>
+                    <a href="#" class="btn">查看评测</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="icon">📊</div>
+                    <h3>Mixpanel</h3>
+                    <p>产品数据分析平台，用户行为洞察利器</p>
+                    <div class="rating">★★★★☆</div>
+                    <a href="#" class="btn">查看评测</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="icon">🎯</div>
+                    <h3>Segment</h3>
+                    <p>客户数据平台(CDP)，数据整合与激活</p>
+                    <div class="rating">★★★★★</div>
+                    <a href="#" class="btn">查看评测</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="icon">💬</div>
+                    <h3>Intercom</h3>
+                    <p>客户消息平台，支持实时聊天与自动化</p>
+                    <div class="rating">★★★★☆</div>
+                    <a href="#" class="btn">查看评测</a>
+                </div>
+                
+                <div class="tool-card">
+                    <div class="icon">📱</div>
+                    <h3>AppsFlyer</h3>
+                    <p>移动归因与分析平台</p>
+                    <div class="rating">★★★★☆</div>
+                    <a href="#" class="btn">查看评测</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 案例研究 -->
+        <div id="cases" class="section">
+            <h2 class="section-title">案例研究</h2>
+            
+            <div class="case-card">
+                <div class="case-header">
+                    <h3>瑞幸咖啡：私域运营与会员体系搭建</h3>
+                    <div class="industry">餐饮 · 零售</div>
+                </div>
+                <div class="case-body">
+                    <h4>背景</h4>
+                    <p>瑞幸通过企业微信构建私域流量池，实现用户精细化运营。</p>
+                    <h4>策略</h4>
+                    <p>① 门店引导+小程序注册 ② 差异化优惠券推送 ③ 社群分层运营</p>
+                    <h4>成效</h4>
+                    <p>私域用户超3000万，月活占比超过40%，复购率提升至35%。</p>
+                </div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-header">
+                    <h3>蕉下： DTC模式下的内容营销</h3>
+                    <div class="industry">消费品 · 电商</div>
+                </div>
+                <div class="case-body">
+                    <h4>背景</h4>
+                    <p>新消费品牌如何通过内容营销实现冷启动。</p>
+                    <h4>策略</h4>
+                    <p>① 小红书种草+抖音直播 ② 明星+KOL+KOC矩阵 ③ 场景化内容输出</p>
+                    <h4>成效</h4>
+                    <p>年GMV突破50亿，小红书笔记超50万篇，品牌搜索指数增长10倍。</p>
+                </div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-header">
+                    <h3>理想汽车：数据驱动的智能营销</h3>
+                    <div class="industry">汽车 · 新能源</div>
+                </div>
+                <div class="case-body">
+                    <h4>背景</h4>
+                    <p>新能源车企如何利用数据中台提升营销效率。</p>
+                    <h4>策略</h4>
+                    <p>① 全渠道数据整合 ② 智能lead分配 ③ 购车旅程自动化</p>
+                    <h4>成效</h4>
+                    <p>线索转化率提升60%，单车营销成本下降30%，用户满意度达4.8分。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 行业报告 -->
+        <div id="reports" class="section">
+            <h2 class="section-title">行业报告</h2>
+            
+            <div class="report-card">
+                <div class="report-icon">📈</div>
+                <div>
+                    <h3>2026中国Martech产业发展白皮书</h3>
+                    <p class="publisher">艾瑞咨询 · 2026年1月</p>
+                    <p>涵盖Martech投融资趋势、主要玩家格局、技术成熟度评估。</p>
+                </div>
+            </div>
+            
+            <div class="report-card">
+                <div class="report-icon">📊</div>
+                <div>
+                    <h3>全球数字营销支出预测2026</h3>
+                    <p class="publisher">eMarketer · 2026年2月</p>
+                    <p>全球数字广告支出将达6000亿美元，AI相关投入增速最快。</p>
+                </div>
+            </div>
+            
+            <div class="report-card">
+                <div class="report-icon">🔒</div>
+                <div>
+                    <h3>中国隐私计算发展研究报告</h3>
+                    <p class="publisher">中国信通院 · 2025年12月</p>
+                    <p>隐私计算技术现状、应用场景、商业化进程全面分析。</p>
+                </div>
+            </div>
+            
+            <div class="report-card">
+                <div class="report-icon">🛒</div>
+                <div>
+                    <h3>2025-2026私域流量白皮书</h3>
+                    <p class="publisher">见实科技 · 2025年11月</p>
+                    <p>私域运营方法论、工具选型、典型案例拆解。</p>
+                </div>
+            </div>
+            
+            <div class="report-card">
+                <div class="report-icon">🤖</div>
+                <div>
+                    <h3>AI营销应用发展报告</h3>
+                    <p class="publisher">营销技术研究院 · 2026年1月</p>
+                    <p>生成式AI在营销各环节的应用现状与未来展望。</p>
+                </div>
+            </div>
+        </div>
+        
         <div class="footer">
-            <p>每日8:00更新 · 聚焦Martech、AdTech、支付科技前沿动态</p>
+            <p>每日8:00更新 · MarTech Hub © 2026</p>
         </div>
     </div>
+    
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
