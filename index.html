@@ -20,8 +20,6 @@
             padding: 40px 20px; 
         }
         .container { max-width: 1000px; margin: 0 auto; }
-        
-        /* Header */
         .header { text-align: center; margin-bottom: 40px; }
         .header h1 { color: #fff; font-size: 2.5em; font-weight: 700; margin-bottom: 10px; }
         .header .subtitle { color: rgba(255,255,255,0.85); font-size: 1.1em; margin-bottom: 20px; }
@@ -32,8 +30,6 @@
             font-size: 0.95em; transition: all 0.3s; 
         }
         .nav-btn:hover, .nav-btn.active { background: #fff; color: var(--primary); }
-        
-        /* Sections */
         .section { display: none; }
         .section.active { display: block; }
         .section-title { 
@@ -44,20 +40,10 @@
             content: ''; width: 6px; height: 28px; 
             background: #fff; border-radius: 3px; 
         }
-        
-        /* Cards */
         .card-grid { 
             display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
             gap: 20px; 
         }
-        .card { 
-            background: #fff; border-radius: 16px; padding: 24px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-        }
-        .card:hover { transform: translateY(-4px); box-shadow: 0 15px 50px rgba(0,0,0,0.2); }
-        
-        /* News Items */
         .news-item { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
         .news-item h3 { color: var(--dark); font-size: 1.3em; margin-bottom: 12px; line-height: 1.4; }
         .news-item .summary { color: #4a4a6a; line-height: 1.7; margin-bottom: 16px; }
@@ -68,8 +54,6 @@
         }
         .news-item .source { color: var(--gray); font-size: 0.9em; }
         .news-item .source a { color: var(--primary); text-decoration: none; }
-        
-        /* Analysis Cards */
         .analysis-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
         .analysis-card .category { 
             color: var(--primary); font-size: 0.85em; font-weight: 600; 
@@ -78,8 +62,6 @@
         .analysis-card h3 { color: var(--dark); font-size: 1.4em; margin-bottom: 12px; }
         .analysis-card .excerpt { color: #4a4a6a; line-height: 1.7; margin-bottom: 16px; }
         .analysis-card .meta { display: flex; justify-content: space-between; color: var(--gray); font-size: 0.85em; }
-        
-        /* Tools Grid */
         .tool-card { background: #fff; border-radius: 16px; padding: 24px; text-align: center; }
         .tool-card .icon { font-size: 3em; margin-bottom: 16px; }
         .tool-card h3 { color: var(--dark); font-size: 1.2em; margin-bottom: 8px; }
@@ -89,8 +71,6 @@
             display: inline-block; background: linear-gradient(135deg, var(--primary), var(--secondary)); 
             color: #fff; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-size: 0.9em; 
         }
-        
-        /* Case Study */
         .case-card { background: #fff; border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
         .case-card .case-header { 
             background: linear-gradient(135deg, var(--primary), var(--secondary)); 
@@ -102,8 +82,6 @@
         .case-card .case-body h4 { color: var(--dark); font-size: 1em; margin: 16px 0 8px; }
         .case-card .case-body h4:first-child { margin-top: 0; }
         .case-card .case-body p { color: #4a4a6a; line-height: 1.7; font-size: 0.95em; }
-        
-        /* Report Card */
         .report-card { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 16px; display: flex; gap: 20px; align-items: flex-start; }
         .report-card .report-icon { 
             font-size: 2.5em; background: linear-gradient(135deg, var(--primary), var(--secondary)); 
@@ -112,12 +90,8 @@
         .report-card h3 { color: var(--dark); font-size: 1.2em; margin-bottom: 8px; }
         .report-card .publisher { color: var(--gray); font-size: 0.85em; margin-bottom: 8px; }
         .report-card p { color: #4a4a6a; font-size: 0.9em; line-height: 1.6; }
-        
-        /* Footer */
         .footer { text-align: center; margin-top: 40px; color: rgba(255,255,255,0.7); font-size: 0.9em; }
         .footer a { color: #fff; }
-        
-        /* Date display */
         .date-display { color: rgba(255,255,255,0.9); font-size: 1em; margin-top: 8px; }
     </style>
 </head>
@@ -126,7 +100,7 @@
         <div class="header">
             <h1>MarTech Hub</h1>
             <p class="subtitle">营销科技前沿 · 深度洞察与行业报告</p>
-            <p class="date-display">2026年2月28日 · 星期六</p>
+            <p class="date-display">2026年3月1日 · 星期日</p>
             
             <div class="nav" style="margin-top: 24px;">
                 <button class="nav-btn active" onclick="showSection('daily')">每日简报</button>
@@ -141,38 +115,38 @@
         <div id="daily" class="section active">
             <div class="news-list">
                 <div class="news-item">
-                    <h3>AI 发展速度超过客户信任</h3>
-                    <p class="summary">营销人员正竞相部署 AI，但除非品牌缩小信任差距，否则客户可能永远不会完全接受 AI 驱动的互动。品牌需在技术创新的同时重视客户信任建设。</p>
-                    <div class="tags"><span class="tag">AI</span><span class="tag">客户信任</span><span class="tag">客户体验</span></div>
-                    <p class="source">来源：MarTech.org · <a href="https://martech.org/ai-is-moving-faster-than-customer-trust/" target="_blank">查看原文</a></p>
+                    <h3>Stripe 估值飙升74%至1590亿美元，传正洽谈收购 PayPal</h3>
+                    <p class="summary">Stripe 在最新员工股份出售中估值达到1590亿美元，同比飙升74%。与此同时，多方消息源称 Stripe 正在探讨收购 PayPal 部分或全部业务的可能性。PayPal 方面则否认正在寻求出售。若交易达成，将重塑全球支付科技格局。</p>
+                    <div class="tags"><span class="tag">支付科技</span><span class="tag">Stripe</span><span class="tag">PayPal</span><span class="tag">并购</span></div>
+                    <p class="source">来源：TechCrunch · <a href="https://techcrunch.com/2026/02/24/stripes-valuation-soars-74-to-159-billion/" target="_blank">估值报道</a> · <a href="https://techcrunch.com/2026/02/24/stripe-is-reportedly-eyeing-deal-to-buy-some-or-all-of-paypal/" target="_blank">收购传闻</a></p>
                 </div>
 
                 <div class="news-item">
-                    <h3>RCS 移动营销：你需要知道的事</h3>
-                    <p class="summary">RCS 是移动营销的游戏规则改变者。最新消息显示 Apple 和 Google 正在测试跨平台 RCS 加密，这将显著提升品牌与消费者的直接沟通能力。</p>
-                    <div class="tags"><span class="tag">RCS</span><span class="tag">移动营销</span><span class="tag">Apple</span><span class="tag">Google</span></div>
-                    <p class="source">来源：MarTech.org · <a href="https://martech.org/mobile-marketing-with-rcs-what-you-need-to-know/" target="_blank">查看原文</a></p>
+                    <h3>PubMatic 全面押注 Agentic AI，AgenticOS 驱动下半年两位数增长</h3>
+                    <p class="summary">程序化广告平台 PubMatic 宣布全面投入 Agentic AI 战略。其 AgenticOS 系统结合强劲的 CTV 和移动端需求，预计将推动公司下半年实现两位数营收增长。这标志着 AdTech 行业从自动化向智能代理决策的关键转型。</p>
+                    <div class="tags"><span class="tag">AdTech</span><span class="tag">AI代理</span><span class="tag">程序化广告</span><span class="tag">CTV</span></div>
+                    <p class="source">来源：AdExchanger · <a href="https://www.adexchanger.com/programmatic/pubmatic-is-all-in-on-agentic-ai/" target="_blank">查看原文</a></p>
                 </div>
 
                 <div class="news-item">
-                    <h3>什么能让 B2B 品牌出现在 GenAI 答案中</h3>
-                    <p class="summary">一项涵盖 1000+ 提示词、跨越四个 AI 引擎的研究揭示了驱动 B2B 品牌在生成式 AI 答案中获得曝光的因素，以及常见 GEO 建议的不足之处。</p>
-                    <div class="tags"><span class="tag">B2B</span><span class="tag">GenAI</span><span class="tag">GEO</span><span class="tag">搜索营销</span></div>
-                    <p class="source">来源：MarTech.org · <a href="https://martech.org/what-gets-b2b-brands-cited-in-genai-answers/" target="_blank">查看原文</a></p>
+                    <h3>WPP 迎来重大变革：新任CEO宣布放弃「控股公司」标签</h3>
+                    <p class="summary">全球最大广告集团 WPP 新任 CEO Cindy Rose 上任后宣布将彻底摆脱传统控股公司模式，推动集团向一体化运营转型。此举将深刻影响广告科技行业的组织架构与客户服务模式，代表着广告巨头对未来竞争格局的战略重新定位。</p>
+                    <div class="tags"><span class="tag">广告科技</span><span class="tag">WPP</span><span class="tag">组织变革</span><span class="tag">行业趋势</span></div>
+                    <p class="source">来源：AdExchanger · <a href="https://www.adexchanger.com/marketers/wpp-braces-for-big-change-as-new-ceo-cindy-rose-says-it-will-ditch-the-holdco-label/" target="_blank">查看原文</a></p>
                 </div>
 
                 <div class="news-item">
-                    <h3>如何在 MarTech 堆栈中构建 AI 代理架构</h3>
-                    <p class="summary">AI 代理将概率决策引入确定性堆栈。营销技术领导者需要定义意图、执行护栏，并构建可扩展的代理系统，以实现营销自动化的下一次飞跃。</p>
-                    <div class="tags"><span class="tag">AI 代理</span><span class="tag">MarTech</span><span class="tag">架构</span><span class="tag">自动化</span></div>
-                    <p class="source">来源：MarTech.org · <a href="https://martech.org/how-to-architect-ai-agents-in-your-martech-stack/" target="_blank">查看原文</a></p>
+                    <h3>The Trade Desk 遭遇逆风：投资者重新审视独立广告科技的价值</h3>
+                    <p class="summary">曾被华尔街热捧的独立 DSP 巨头 The Trade Desk 正面临投资者信心重建的挑战。市场对「客观、独立广告科技」的价值命题产生质疑，TTD 需在投资者社区和 AdTech 行业中重新构建信任。这一变化反映了广告科技市场正在经历深层调整。</p>
+                    <div class="tags"><span class="tag">AdTech</span><span class="tag">DSP</span><span class="tag">The Trade Desk</span><span class="tag">资本市场</span></div>
+                    <p class="source">来源：AdExchanger · <a href="https://www.adexchanger.com/marketers/the-trade-desk-faces-headwinds-as-investors-reconsider-the-thesis-of-objective-indie-ad-tech/" target="_blank">查看原文</a></p>
                 </div>
 
                 <div class="news-item">
-                    <h3>数据替身问题</h3>
-                    <p class="summary">AI 代理、共享信号和碎片化身份正在扭曲营销情报。大多数品牌不知道真正在行动的是谁——这一挑战需要新的身份解析解决方案。</p>
-                    <div class="tags"><span class="tag">数据</span><span class="tag">身份解析</span><span class="tag">AI</span><span class="tag">隐私</span></div>
-                    <p class="source">来源：MarTech.org · <a href="https://martech.org/the-data-doppelganger-problem/" target="_blank">查看原文</a></p>
+                    <h3>Jack Dorsey 将 Block 员工缩减一半，宣称AI替代是行业必然</h3>
+                    <p class="summary">Block（Square/Cash App 母公司）CEO Jack Dorsey 将公司员工规模从约8000人缩减至约4000人，并公开表示AI驱动的人力缩减将成为所有科技公司的必经之路。此举引发支付科技和更广泛科技行业对 AI 替代人力的深度讨论。</p>
+                    <div class="tags"><span class="tag">支付科技</span><span class="tag">Block</span><span class="tag">AI替代</span><span class="tag">裁员</span></div>
+                    <p class="source">来源：TechCrunch · <a href="https://techcrunch.com/2026/02/26/jack-dorsey-block-layoffs-4000-halved-employees-your-company-is-next/" target="_blank">查看原文</a></p>
                 </div>
             </div>
         </div>
@@ -182,24 +156,24 @@
             <h2 class="section-title">深度分析</h2>
             
             <div class="analysis-card">
-                <div class="category">AI & Agent</div>
-                <h3>2026年：AI Agent 元年</h3>
-                <p class="excerpt">从Claude Code到GPTs，AI Agent正在重新定义人机协作模式。本文分析三大主流AI Agent平台的能力边界与最佳应用场景。</p>
+                <div class="category">AdTech · 并购</div>
+                <h3>Infillion 连续收购：买下零售数据公司 Catalina 意味着什么</h3>
+                <p class="excerpt">Infillion 收购零售采购数据公司 Catalina，商业数据的战略价值持续攀升。零售媒体、购物者数据与 DSP 的融合正在重塑广告科技的价值链。</p>
+                <div class="meta"><span>2026-02-28</span><span>阅读时长: 6分钟</span></div>
+            </div>
+            
+            <div class="analysis-card">
+                <div class="category">MarTech · AI</div>
+                <h3>AI 发展速度超过客户信任：品牌该如何应对</h3>
+                <p class="excerpt">营销人员竞相部署 AI，但客户信任远未跟上。如何在技术创新与信任建设之间取得平衡，成为2026年品牌战略的核心议题。</p>
                 <div class="meta"><span>2026-02-27</span><span>阅读时长: 8分钟</span></div>
             </div>
             
             <div class="analysis-card">
-                <div class="category">Martech 趋势</div>
-                <h3>中国Martech市场格局深度解读</h3>
-                <p class="excerpt">从CRM到CDP，从营销自动化到私域运营，详解中国Martech生态的演进路径与未来机会点。</p>
-                <div class="meta"><span>2026-02-25</span><span>阅读时长: 12分钟</span></div>
-            </div>
-            
-            <div class="analysis-card">
-                <div class="category">数据隐私</div>
-                <h3>隐私计算：下一阶段营销科技的基础设施</h3>
-                <p class="excerpt">随着第三方Cookie退出，隐私计算技术正在成为营销数据打通的核心方案。深度解读联邦学习、差分隐私等技术落地进展。</p>
-                <div class="meta"><span>2026-02-20</span><span>阅读时长: 10分钟</span></div>
+                <div class="category">搜索营销</div>
+                <h3>B2B 品牌如何在 GenAI 答案中获得曝光</h3>
+                <p class="excerpt">一项涵盖1000+提示词、跨越四个AI引擎的研究揭示了驱动B2B品牌在生成式AI答案中可见性的关键因素，及常见GEO策略的局限。</p>
+                <div class="meta"><span>2026-02-27</span><span>阅读时长: 10分钟</span></div>
             </div>
         </div>
         
@@ -210,10 +184,10 @@
             <div class="card-grid">
                 <div class="tool-card">
                     <div class="icon">🤖</div>
-                    <h3>Claude Code</h3>
-                    <p>AI编程助手，适合开发者与自动化工作流</p>
+                    <h3>PubMatic AgenticOS</h3>
+                    <p>程序化广告AI代理操作系统，自动优化CTV和移动端投放</p>
                     <div class="rating">★★★★★</div>
-                    <a href="#" class="btn">查看评测</a>
+                    <a href="https://www.adexchanger.com/programmatic/pubmatic-is-all-in-on-agentic-ai/" class="btn">了解详情</a>
                 </div>
                 
                 <div class="tool-card">
@@ -249,10 +223,10 @@
                 </div>
                 
                 <div class="tool-card">
-                    <div class="icon">📱</div>
-                    <h3>AppsFlyer</h3>
-                    <p>移动归因与分析平台</p>
-                    <div class="rating">★★★★☆</div>
+                    <div class="icon">💳</div>
+                    <h3>Stripe</h3>
+                    <p>全球支付基础设施，估值1590亿美元</p>
+                    <div class="rating">★★★★★</div>
                     <a href="#" class="btn">查看评测</a>
                 </div>
             </div>
@@ -279,7 +253,7 @@
             
             <div class="case-card">
                 <div class="case-header">
-                    <h3>蕉下： DTC模式下的内容营销</h3>
+                    <h3>蕉下：DTC模式下的内容营销</h3>
                     <div class="industry">消费品 · 电商</div>
                 </div>
                 <div class="case-body">
@@ -359,7 +333,7 @@
         </div>
         
         <div class="footer">
-            <p>每日8:00更新 · MarTech Hub © 2026</p>
+            <p>每日更新 · MarTech Hub © 2026</p>
         </div>
     </div>
     
