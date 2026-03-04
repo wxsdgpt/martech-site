@@ -1,0 +1,52 @@
+{
+  "date": "2026-03-04",
+  "weekday": "星期三",
+  "news": [
+    {
+      "title": "Walmart 广告业务 2025 年增长 46%，逼近 64 亿美元",
+      "summary": "零售巨头加速布局零售媒体网络（RMN），Walmart Connect 已成为仅次于亚马逊的美国第二大零售媒体平台。以数据能力驱动第三方广告收入增长。",
+      "tags": ["AdTech", "零售媒体", "Walmart", "增长"],
+      "source": "AdWeek",
+      "url": "https://www.adweek.com/commerce/walmarts-ad-business-grew-46-in-2025-hitting-nearly-64b/",
+      "category": "daily"
+    },
+    {
+      "title": "Criteo 将支持在 ChatGPT 上购买广告",
+      "summary": "程序化广告正在向生成式 AI 场景延伸，广告主可在对话式 AI 环境中精准触达用户。AI 平台成为新的流量入口。",
+      "tags": ["AdTech", "AI", "Criteo", "ChatGPT"],
+      "source": "AdWeek",
+      "url": "https://www.adweek.com/commerce/advertisers-will-soon-be-able-to-buy-chatgpt-ads-through-criteo/",
+      "category": "daily"
+    },
+    {
+      "title": "第三方 AI 代理可接入 LiveRamp 平台",
+      "summary": "LiveRamp 开放平台接口，允许第三方 AI 代理直接接入其数据基础设施，形成从洞察到执行的自动化闭环，推动营销智能体生态加速成熟。",
+      "tags": ["MarTech", "AI Agent", "LiveRamp", "数据平台"],
+      "source": "AdWeek",
+      "url": "https://www.adweek.com/media/live-ramp-third-party-agents/",
+      "category": "daily"
+    },
+    {
+      "title": "数据为王时代终结：上下文成为新 refineries",
+      "summary": "没有 refineries，数据只是「有气味的毒物」。营销人员需从数据收集转向情境理解，在对的时间向对的人传递对的信息。",
+      "tags": ["MarTech", "数据策略", "上下文营销", "趋势"],
+      "source": "MarTech.org",
+      "url": "https://martech.org/the-era-of-data-dominance-is-over-and-it-didnt-last-very-long/",
+      "category": "daily"
+    },
+    {
+      "title": "自动化是营销获取 AI 投资回报的最快路径",
+      "summary": "自动化程度与 AI 回报直接相关。从营销自动化入手，将 AI 与销售管道、交易速度和收入增长直接关联，是实现真正 ROI 的务实路径。",
+      "tags": ["MarTech", "AI", "自动化", "ROI"],
+      "source": "MarTech.org",
+      "url": "https://martech.org/automation-is-marketings-fastest-path-to-ai-returns/",
+      "category": "daily"
+    }
+  ],
+  "analysis": [],
+  "tools": [],
+  "meta": {
+    "updated_at": "2026-03-04T09:00:00+08:00",
+    "version": 1
+  }
+}
