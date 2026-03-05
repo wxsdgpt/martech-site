@@ -3,50 +3,50 @@
   "weekday": "星期四",
   "news": [
     {
-      "title": "Criteo 正式加入 OpenAI 广告试点，ChatGPT 将成为程序化广告新战场",
-      "summary": "Criteo 宣布加入 OpenAI 在 ChatGPT 上的广告试点项目。作为全球管理超 40 亿美元年媒体支出、服务 1.7 万广告主的 AdTech 巨头，Criteo 将把商业智能和 AI 决策引擎引入对话式 AI 场景。这标志着程序化广告正式从传统网页/App 延伸到生成式 AI 界面，广告行业格局或将因此加速重构。",
-      "tags": ["AdTech", "AI", "Criteo", "ChatGPT"],
+      "title": "Kraken 成为首家获得美联储主账户的加密银行，正式接入央行支付系统",
+      "summary": "Kraken Financial（怀俄明州特许银行）获批美联储主账户，成为美国首家直接接入美联储核心支付系统的数字资产银行。这意味着 Kraken 可像传统银行一样使用 Fedwire 等央行支付通道，无需依赖中间行。此举标志着加密行业与传统金融基础设施的深度融合进入新阶段，对整个支付科技格局影响深远。",
+      "tags": ["支付科技", "加密货币", "美联储", "Kraken"],
+      "source": "Reuters / CoinDesk",
+      "url": "https://www.coindesk.com/business/2026/03/04/kraken-becomes-first-crypto-company-to-secure-fed-master-account-access-wsj",
+      "category": "daily"
+    },
+    {
+      "title": "Mastercard 与 SoFi 达成合作：SoFiUSD 稳定币将用于全球支付网络结算",
+      "summary": "SoFi Technologies 与 Mastercard 宣布重磅合作——SoFiUSD 将成为 Mastercard 全球支付网络的结算选项。SoFiUSD 是首个由美国国家特许银行发行的稳定币。SoFi 银行将率先使用该稳定币结算自有 Mastercard 信用卡和借记卡交易，其支付技术平台 Galileo 也将向客户银行和发卡机构开放此选项。这是稳定币首次大规模进入传统卡网络结算体系。",
+      "tags": ["支付科技", "稳定币", "Mastercard", "SoFi"],
+      "source": "Fintech Futures / Reuters",
+      "url": "https://www.fintechfutures.com/blockchain-crypto-digital-assets/mastercard-integrates-sofiusd-for-stablecoin-settlement",
+      "category": "daily"
+    },
+    {
+      "title": "PhonePe 瞄准 105 亿美元估值启动印度 IPO，亚洲支付巨头加速上市潮",
+      "summary": "据 Reuters 独家报道，沃尔玛控股的印度最大支付平台 PhonePe 正启动 IPO，目标估值 90-105 亿美元，预计融资约 9-10.5 亿美元。PhonePe 拥有印度 UPI 支付市场近半份额，月活用户超 5 亿。继 PayPay 冲刺纳斯达克之后，PhonePe 选择本土上市，亚洲数字支付市场的资本化进程正全面提速。",
+      "tags": ["支付科技", "IPO", "PhonePe", "印度"],
+      "source": "Reuters",
+      "url": "https://www.reuters.com/world/india/walmart-backed-phonepe-targets-up-105-billion-valuation-india-ipo-sources-say-2026-03-04/",
+      "category": "daily"
+    },
+    {
+      "title": "Onetag 收购沉浸式广告公司 Aryel，打造互动型程序化广告新标准",
+      "summary": "全球广告交易平台 Onetag 宣布收购意大利 AdTech 公司 Aryel，后者专注沉浸式和互动式广告体验。Aryel 的互动广告格式将原生集成到 Onetag 交易平台中，使创意数据能实时影响投放决策。此次收购由 Wise Equity 支持，合并后平台年收入规模约 6000 万欧元，目标是用"注意力+互动"重新定义程序化广告的价值交换。",
+      "tags": ["AdTech", "并购", "程序化广告", "互动广告"],
       "source": "MarTech Cube",
-      "url": "https://www.martechcube.com/criteo-joins-openai-advertising-pilot-in-chatgpt/",
+      "url": "https://www.martechcube.com/onetag-acquires-aryel-to-create-the-new-value-exchange-for-programmatic-ads/",
       "category": "daily"
     },
     {
-      "title": "Dstillery、Keynes 与 The Trade Desk 联手推进 Agentic 广告投放",
-      "summary": "AI 定向广告公司 Dstillery 发布 DS-1 Agentic 广告平台，CTV 广告技术公司 Keynes 成为首批采用者，The Trade Desk 提供底层程序化支持。DS-1 让媒体买家用 AI 代理作为投放\"副驾驶\"，自动完成受众建模与优化。The Trade Desk 评价这是\"程序化与 Agentic 交汇处的创新终于落地\"。",
-      "tags": ["AdTech", "AI Agent", "程序化广告", "CTV"],
-      "source": "AdExchanger / MarTech Series",
-      "url": "https://www.adexchanger.com/marketers/dstillery-has-a-new-agentic-ai-interface-for-refining-audiences-faster/",
-      "category": "daily"
-    },
-    {
-      "title": "Expandi 收购 Kompass，打造欧洲最大 B2B 数据+AI 营销平台",
-      "summary": "Expandi Limited 宣布 100% 收购全球 B2B 数据巨头 Kompass，合并后将成为欧洲领先的 B2B 数据、媒体和 AI 驱动营销平台。Expandi 以数据驱动的多渠道 B2B 营销见长，Kompass 拥有全球最大的商业数据库之一。此次整合意味着 B2B MarTech 领域的并购整合潮正在加速。",
-      "tags": ["MarTech", "并购", "B2B", "数据平台"],
-      "source": "MarTech Cube / AI Journal",
-      "url": "https://www.martechcube.com/expandi-limited-announced-the-acquisition-of-kompass/",
-      "category": "daily"
-    },
-    {
-      "title": "软银旗下 PayPay 冲刺纳斯达克 IPO，估值剑指 134 亿美元",
-      "summary": "日本最大数字钱包 PayPay 正式启动美国 IPO，目标融资 11 亿美元，估值高达 134 亿美元。这将是近年最大规模的日本公司赴美上市。在 Stripe 传出收购 PayPal 的同一时期，PayPay 逆势上市，折射出全球支付科技格局正经历深刻分化：亚洲数字钱包扩张，美国巨头酝酿整合。",
-      "tags": ["支付科技", "IPO", "PayPay", "软银"],
-      "source": "TechFundingNews / Manila Times",
-      "url": "https://techfundingnews.com/paypay-13bn-ipo-nasdaq-softbank/",
-      "category": "daily"
-    },
-    {
-      "title": "BNPL 全球市场预测报告：2032 年将达 1184.5 亿美元",
-      "summary": "最新行业报告显示，全球先买后付（BNPL）市场在灵活支付需求、用户体验升级和商户快速采纳三重驱动下持续高速增长，预计 2032 年市场规模将达 1184.5 亿美元。监管框架完善和数据驱动决策成为关键变量。BNPL 正从消费金融工具演变为电商基础设施的一部分。",
-      "tags": ["支付科技", "BNPL", "市场预测", "电商"],
-      "source": "GlobeNewsWire",
-      "url": "https://www.globenewswire.com/news-release/2026/03/04/3249270/28124/en/Buy-Now-Pay-Later-Global-Forecasts-Report-2026-2032-118-45-Bn-Market-Driven-by-Flexible-Payments-Demand-Enhanced-UX-and-Rapid-Merchant-Adoption.html",
+      "title": "MarTech Conference 2026 首推「Vibe Marketing Lab」，氛围营销成行业新焦点",
+      "summary": "MarTech Conference 2026 年 3 月线上大会首次推出「Vibe Marketing Lab」环节，以互动实验室形式展示创意问题解决能力。这一创新议程设置反映了行业从纯数据驱动营销向「氛围营销（Vibe Marketing）」转向的趋势——强调品牌情感共鸣与创意直觉的融合。同期，ARF 也将在纽约举办 AUDIENCExSCIENCE 2026 大会，庆祝营销科学 90 周年。",
+      "tags": ["MarTech", "行业大会", "Vibe Marketing", "趋势"],
+      "source": "MarTech.org",
+      "url": "https://martech.org/conference/march/agenda/",
       "category": "daily"
     }
   ],
   "analysis": [],
   "tools": [],
   "meta": {
-    "updated_at": "2026-03-05T06:37:00+08:00",
+    "updated_at": "2026-03-05T09:00:00+08:00",
     "version": 1
   }
 }
