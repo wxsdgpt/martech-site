@@ -5,170 +5,477 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarTech Hub - 营销科技前沿</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --gray: #6c757d;
+            --starry-deep: #0B1026;
+            --starry-blue: #1B2A4A;
+            --starry-purple: #2D1B69;
+            --swirl-cyan: #4ECDC4;
+            --swirl-gold: #F7DC6F;
+            --moonlight: #E8E8F0;
+            --nebula-pink: #FF6B9D;
+            --ai-green: #00D4AA;
+            --text-primary: #E8E8F0;
+            --text-secondary: #9BA4B5;
+            --card-bg: rgba(27, 42, 74, 0.6);
+            --card-border: rgba(78, 205, 196, 0.2);
         }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); 
-            min-height: 100vh; 
-            padding: 40px 20px; 
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--starry-deep);
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
         }
-        .container { max-width: 1000px; margin: 0 auto; }
-        .header { text-align: center; margin-bottom: 40px; }
-        .header h1 { color: #fff; font-size: 2.5em; font-weight: 700; margin-bottom: 10px; }
-        .header .subtitle { color: rgba(255,255,255,0.85); font-size: 1.1em; margin-bottom: 20px; }
-        .nav { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-        .nav-btn { 
-            background: rgba(255,255,255,0.2); color: #fff; border: none; 
-            padding: 10px 20px; border-radius: 25px; cursor: pointer; 
-            font-size: 0.95em; transition: all 0.3s; 
+
+        /* ===== 星空背景 ===== */
+        #starfield {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
         }
-        .nav-btn:hover, .nav-btn.active { background: #fff; color: var(--primary); }
+
+        .bg-swirl {
+            position: fixed; top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(45, 27, 105, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(27, 42, 74, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(78, 205, 196, 0.05) 0%, transparent 40%);
+            animation: swirlRotate 120s linear infinite;
+            z-index: 0; pointer-events: none;
+        }
+
+        @keyframes swirlRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== 主容器 ===== */
+        .container {
+            max-width: 1100px; margin: 0 auto;
+            padding: 40px 20px; position: relative; z-index: 1;
+        }
+
+        /* ===== 头部 ===== */
+        .header { text-align: center; margin-bottom: 48px; }
+
+        .header h1 {
+            font-size: 3em; font-weight: 700;
+            background: linear-gradient(135deg, var(--swirl-cyan), var(--swirl-gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary); font-size: 1.1em;
+            font-weight: 300; letter-spacing: 4px;
+        }
+
+        .date-display {
+            color: var(--swirl-gold); font-size: 1em;
+            margin-top: 16px; font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* ===== 导航 ===== */
+        .nav {
+            display: flex; justify-content: center;
+            gap: 8px; margin-top: 28px; flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(78, 205, 196, 0.1);
+            color: var(--text-secondary);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            padding: 10px 22px; border-radius: 25px;
+            cursor: pointer; font-size: 0.9em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(78, 205, 196, 0.2);
+            color: var(--swirl-cyan);
+            border-color: var(--swirl-cyan);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.3), rgba(45, 27, 105, 0.4));
+            color: var(--swirl-cyan);
+            border-color: var(--swirl-cyan);
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.2);
+        }
+
+        /* ===== 内容区 ===== */
         .section { display: none; }
         .section.active { display: block; }
-        .section-title { 
-            color: #fff; font-size: 1.8em; margin-bottom: 24px; 
-            display: flex; align-items: center; gap: 12px;
+
+        .section-title {
+            color: var(--moonlight); font-size: 1.6em;
+            margin-bottom: 28px; display: flex;
+            align-items: center; gap: 12px; font-weight: 500;
         }
-        .section-title::before { 
-            content: ''; width: 6px; height: 28px; 
-            background: #fff; border-radius: 3px; 
+
+        .section-title::before {
+            content: ''; width: 4px; height: 24px;
+            background: linear-gradient(180deg, var(--swirl-cyan), var(--swirl-gold));
+            border-radius: 2px;
         }
-        .card-grid { 
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-            gap: 20px; 
+
+        /* ===== 新闻卡片 ===== */
+        .news-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 28px;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+            position: relative; overflow: hidden;
         }
-        .news-item { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
-        .news-item h3 { color: var(--dark); font-size: 1.3em; margin-bottom: 12px; line-height: 1.4; }
-        .news-item .summary { color: #4a4a6a; line-height: 1.7; margin-bottom: 16px; }
-        .news-item .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-        .news-item .tag { 
-            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-            color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.85em; 
+
+        .news-item::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--swirl-cyan), transparent);
+            opacity: 0; transition: opacity 0.4s;
         }
-        .news-item .source { color: var(--gray); font-size: 0.9em; }
-        .news-item .source a { color: var(--primary); text-decoration: none; }
-        .analysis-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
-        .analysis-card .category { 
-            color: var(--primary); font-size: 0.85em; font-weight: 600; 
-            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; 
+
+        .news-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(78, 205, 196, 0.5);
+            box-shadow: 0 8px 32px rgba(78, 205, 196, 0.15), 0 0 60px rgba(78, 205, 196, 0.05);
         }
-        .analysis-card h3 { color: var(--dark); font-size: 1.4em; margin-bottom: 12px; }
-        .analysis-card .excerpt { color: #4a4a6a; line-height: 1.7; margin-bottom: 16px; }
-        .analysis-card .meta { display: flex; justify-content: space-between; color: var(--gray); font-size: 0.85em; }
-        .tool-card { background: #fff; border-radius: 16px; padding: 24px; text-align: center; }
+
+        .news-item:hover::before { opacity: 1; }
+
+        .news-item h3 {
+            color: var(--moonlight); font-size: 1.25em;
+            margin-bottom: 12px; line-height: 1.5; font-weight: 500;
+        }
+
+        .news-item .summary {
+            color: var(--text-secondary); line-height: 1.8;
+            margin-bottom: 16px; font-size: 0.95em;
+        }
+
+        .news-item .tags {
+            display: flex; flex-wrap: wrap;
+            gap: 8px; margin-bottom: 14px;
+        }
+
+        .news-item .tag {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.2), rgba(45, 27, 105, 0.3));
+            color: var(--swirl-cyan); padding: 3px 12px;
+            border-radius: 20px; font-size: 0.8em;
+            border: 1px solid rgba(78, 205, 196, 0.15);
+        }
+
+        .news-item .source {
+            color: var(--text-secondary); font-size: 0.85em;
+        }
+
+        .news-item .source a {
+            color: var(--swirl-cyan); text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .news-item .source a:hover { color: var(--swirl-gold); }
+
+        /* ===== NEW 徽章 ===== */
+        .badge-new {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--swirl-gold), #f0a500);
+            color: var(--starry-deep); font-size: 0.7em;
+            padding: 2px 8px; border-radius: 10px;
+            font-weight: 700; margin-left: 8px;
+            animation: pulseBadge 2s ease-in-out infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes pulseBadge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* ===== 分析卡片 ===== */
+        .analysis-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 28px;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .analysis-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(78, 205, 196, 0.4);
+            box-shadow: 0 8px 32px rgba(78, 205, 196, 0.1);
+        }
+
+        .analysis-card .category {
+            color: var(--nebula-pink); font-size: 0.8em;
+            font-weight: 600; text-transform: uppercase;
+            letter-spacing: 2px; margin-bottom: 10px;
+        }
+
+        .analysis-card h3 {
+            color: var(--moonlight); font-size: 1.3em;
+            margin-bottom: 12px; font-weight: 500;
+        }
+
+        .analysis-card .excerpt {
+            color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;
+        }
+
+        .analysis-card .meta {
+            display: flex; justify-content: space-between;
+            color: var(--text-secondary); font-size: 0.85em;
+        }
+
+        /* ===== 工具卡片 ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 28px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(78, 205, 196, 0.5);
+            box-shadow: 0 8px 32px rgba(78, 205, 196, 0.15);
+        }
+
         .tool-card .icon { font-size: 3em; margin-bottom: 16px; }
-        .tool-card h3 { color: var(--dark); font-size: 1.2em; margin-bottom: 8px; }
-        .tool-card p { color: var(--gray); font-size: 0.9em; line-height: 1.6; margin-bottom: 16px; }
-        .tool-card .rating { color: #ffc107; margin-bottom: 12px; }
-        .tool-card .btn { 
-            display: inline-block; background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-            color: #fff; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-size: 0.9em; 
+        .tool-card h3 { color: var(--moonlight); font-size: 1.15em; margin-bottom: 8px; }
+        .tool-card p { color: var(--text-secondary); font-size: 0.9em; line-height: 1.6; margin-bottom: 16px; }
+        .tool-card .rating { color: var(--swirl-gold); margin-bottom: 12px; }
+
+        .tool-card .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.3), rgba(45, 27, 105, 0.4));
+            color: var(--swirl-cyan); padding: 8px 20px;
+            border-radius: 20px; text-decoration: none; font-size: 0.9em;
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            transition: all 0.3s;
         }
-        .case-card { background: #fff; border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
-        .case-card .case-header { 
-            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-            color: #fff; padding: 20px 24px; 
+
+        .tool-card .btn:hover {
+            background: rgba(78, 205, 196, 0.3);
+            box-shadow: 0 0 16px rgba(78, 205, 196, 0.2);
         }
-        .case-card .case-header h3 { font-size: 1.3em; }
-        .case-card .case-header .industry { opacity: 0.9; font-size: 0.9em; margin-top: 4px; }
-        .case-card .case-body { padding: 24px; }
-        .case-card .case-body h4 { color: var(--dark); font-size: 1em; margin: 16px 0 8px; }
+
+        /* ===== 案例卡片 ===== */
+        .case-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px; overflow: hidden;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(78, 205, 196, 0.4);
+        }
+
+        .case-card .case-header {
+            background: linear-gradient(135deg, var(--starry-purple), var(--starry-blue));
+            padding: 20px 28px;
+        }
+
+        .case-card .case-header h3 { color: var(--moonlight); font-size: 1.2em; }
+        .case-card .case-header .industry { color: var(--swirl-cyan); font-size: 0.85em; margin-top: 4px; }
+        .case-card .case-body { padding: 24px 28px; }
+        .case-card .case-body h4 { color: var(--swirl-gold); font-size: 0.95em; margin: 16px 0 8px; }
         .case-card .case-body h4:first-child { margin-top: 0; }
-        .case-card .case-body p { color: #4a4a6a; line-height: 1.7; font-size: 0.95em; }
-        .report-card { background: #fff; border-radius: 16px; padding: 24px; margin-bottom: 16px; display: flex; gap: 20px; align-items: flex-start; }
-        .report-card .report-icon { 
-            font-size: 2.5em; background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+        .case-card .case-body p { color: var(--text-secondary); line-height: 1.7; font-size: 0.95em; }
+
+        /* ===== 报告卡片 ===== */
+        .report-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 24px;
+            margin-bottom: 16px;
+            display: flex; gap: 20px; align-items: flex-start;
+            transition: all 0.4s ease;
         }
-        .report-card h3 { color: var(--dark); font-size: 1.2em; margin-bottom: 8px; }
-        .report-card .publisher { color: var(--gray); font-size: 0.85em; margin-bottom: 8px; }
-        .report-card p { color: #4a4a6a; font-size: 0.9em; line-height: 1.6; }
-        .footer { text-align: center; margin-top: 40px; color: rgba(255,255,255,0.7); font-size: 0.9em; }
-        .footer a { color: #fff; }
-        .date-display { color: rgba(255,255,255,0.9); font-size: 1em; margin-top: 8px; }
+
+        .report-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(78, 205, 196, 0.4);
+        }
+
+        .report-card .report-icon {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, var(--swirl-cyan), var(--swirl-gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .report-card h3 { color: var(--moonlight); font-size: 1.15em; margin-bottom: 8px; }
+        .report-card .publisher { color: var(--swirl-cyan); font-size: 0.85em; margin-bottom: 8px; }
+        .report-card p { color: var(--text-secondary); font-size: 0.9em; line-height: 1.6; }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            text-align: center; margin-top: 60px; padding: 30px 0;
+            border-top: 1px solid rgba(78, 205, 196, 0.1);
+            color: var(--text-secondary); font-size: 0.85em;
+        }
+
+        .footer .powered {
+            display: flex; align-items: center;
+            justify-content: center; gap: 8px;
+        }
+
+        .footer .ai-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--ai-green);
+            animation: breathe 3s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.4; box-shadow: 0 0 4px var(--ai-green); }
+            50% { opacity: 1; box-shadow: 0 0 12px var(--ai-green); }
+        }
+
+        /* ===== AI 脉搏角标 ===== */
+        .ai-pulse {
+            position: fixed; bottom: 24px; left: 24px;
+            display: flex; align-items: center; gap: 8px;
+            color: var(--ai-green); font-size: 0.75em;
+            letter-spacing: 2px; z-index: 10; opacity: 0.6;
+        }
+
+        .ai-pulse .dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--ai-green);
+            animation: breathe 2s ease-in-out infinite;
+        }
+
+        /* ===== 数据流角标 ===== */
+        .data-stream {
+            position: fixed; bottom: 24px; right: 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.65em; color: rgba(78, 205, 196, 0.25);
+            line-height: 1.4; z-index: 10; text-align: right;
+            width: 160px; height: 80px; overflow: hidden;
+            pointer-events: none;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .container { padding: 20px 16px; }
+            .news-item { padding: 20px; }
+            .card-grid { grid-template-columns: 1fr; }
+            .ai-pulse, .data-stream { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .bg-swirl { animation: none; }
+        }
     </style>
 </head>
 <body>
+    <div class="bg-swirl"></div>
+    <canvas id="starfield"></canvas>
+
     <div class="container">
         <div class="header">
-            <h1>MarTech Hub</h1>
-            <p class="subtitle">营销科技前沿 · 深度洞察与行业报告</p>
-            <p class="date-display">2026年3月4日 · 星期三</p>
-            
-            <div class="nav" style="margin-top: 24px;">
-                <button class="nav-btn active" onclick="showSection('daily')">每日简报</button>
-                <button class="nav-btn" onclick="showSection('analysis')">深度分析</button>
-                <button class="nav-btn" onclick="showSection('tools')">工具测评</button>
-                <button class="nav-btn" onclick="showSection('cases')">案例研究</button>
-                <button class="nav-btn" onclick="showSection('reports')">行业报告</button>
+            <h1>✦ MarTech Hub</h1>
+            <p class="subtitle">营 销 科 技 前 沿 · 深 度 洞 察</p>
+            <p class="date-display">2026年3月5日 · 星期四</p>
+
+            <div class="nav">
+                <button class="nav-btn active" onclick="showSection('daily', this)">每日简报</button>
+                <button class="nav-btn" onclick="showSection('analysis', this)">深度分析</button>
+                <button class="nav-btn" onclick="showSection('tools', this)">工具雷达</button>
+                <button class="nav-btn" onclick="showSection('cases', this)">案例解码</button>
+                <button class="nav-btn" onclick="showSection('reports', this)">行业报告</button>
             </div>
         </div>
-        
+
         <!-- 每日简报 -->
         <div id="daily" class="section active">
-            <div class="news-list">
-                <div class="news-item">
-                    <h3>Walmart 广告业务 2025 年增长 46%，逼近 64 亿美元</h3>
-                    <p class="summary">尽管销售额下滑，Target 去年仍从广告业务中赚取 9.15 亿美元。零售巨头们正加速布局零售媒体网络（RMN），以数据能力驱动第三方广告收入增长。Walmart Connect 已成为仅次于亚马逊的美国第二大零售媒体平台。</p>
-                    <div class="tags"><span class="tag">AdTech</span><span class="tag">零售媒体</span><span class="tag">Walmart</span><span class="tag">增长</span></div>
-                    <p class="source">来源：AdWeek · <a href="https://www.adweek.com/commerce/walmarts-ad-business-grew-46-in-2025-hitting-nearly-64b/" target="_blank">查看原文</a></p>
-                </div>
+            <h2 class="section-title">每日简报 <span class="badge-new">NEW</span></h2>
 
-                <div class="news-item">
-                    <h3>Criteo 将支持在 ChatGPT 上购买广告</h3>
-                    <p class="summary">广告技术公司 Criteo 宣布将支持品牌在 ChatGPT 上购买广告， Advertisers Will Soon Be Able to Buy ChatGPT Ads Through Criteo。随着 AI 平台成为新的流量入口，程序化广告正在向生成式 AI 场景延伸，广告主可在对话式 AI 环境中精准触达用户。</p>
-                    <div class="tags"><span class="tag">AdTech</span><span class="tag">AI</span><span class="tag">Criteo</span><span class="tag">ChatGPT</span></div>
-                    <p class="source">来源：AdWeek · <a href="https://www.adweek.com/commerce/advertisers-will-soon-be-able-to-buy-chatgpt-ads-through-criteo/" target="_blank">查看原文</a></p>
-                </div>
+            <div class="news-item">
+                <h3>Criteo 正式加入 OpenAI 广告试点，ChatGPT 将成为程序化广告新战场</h3>
+                <p class="summary">Criteo 宣布加入 OpenAI 在 ChatGPT 上的广告试点项目。作为全球管理超 40 亿美元年媒体支出、服务 1.7 万广告主的 AdTech 巨头，Criteo 将把商业智能和 AI 决策引擎引入对话式 AI 场景。这标志着程序化广告正式从传统网页/App 延伸到生成式 AI 界面，广告行业格局或将因此加速重构。</p>
+                <div class="tags"><span class="tag">AdTech</span><span class="tag">AI</span><span class="tag">Criteo</span><span class="tag">ChatGPT</span></div>
+                <p class="source">来源：MarTech Cube · <a href="https://www.martechcube.com/criteo-joins-openai-advertising-pilot-in-chatgpt/" target="_blank">查看原文 →</a></p>
+            </div>
 
-                <div class="news-item">
-                    <h3>第三方 AI 代理可接入 LiveRamp 平台</h3>
-                    <p class="summary">LiveRamp 宣布开放平台接口，允许第三方 AI 代理直接接入其数据基础设施。此举意味着营销 AI 代理可自主完成数据激活、受体匹配和跨平台投放，形成从洞察到执行的自动化闭环，推动营销智能体生态加速成熟。</p>
-                    <div class="tags"><span class="tag">MarTech</span><span class="tag">AI Agent</span><span class="tag">LiveRamp</span><span class="tag">数据平台</span></div>
-                    <p class="source">来源：AdWeek · <a href="https://www.adweek.com/media/live-ramp-third-party-agents/" target="_blank">查看原文</a></p>
-                </div>
+            <div class="news-item">
+                <h3>Dstillery、Keynes 与 The Trade Desk 联手推进 Agentic 广告投放</h3>
+                <p class="summary">AI 定向广告公司 Dstillery 发布 DS-1 Agentic 广告平台，CTV 广告技术公司 Keynes 成为首批采用者，The Trade Desk 提供底层程序化支持。DS-1 让媒体买家用 AI 代理作为投放"副驾驶"，自动完成受众建模与优化。The Trade Desk 评价这是"程序化与 Agentic 交汇处的创新终于落地"。</p>
+                <div class="tags"><span class="tag">AdTech</span><span class="tag">AI Agent</span><span class="tag">程序化广告</span><span class="tag">CTV</span></div>
+                <p class="source">来源：AdExchanger / MarTech Series · <a href="https://www.adexchanger.com/marketers/dstillery-has-a-new-agentic-ai-interface-for-refining-audiences-faster/" target="_blank">查看原文 →</a></p>
+            </div>
 
-                <div class="news-item">
-                    <h3>数据为王时代终结：上下文成为新 refineries</h3>
-                    <p class="summary">MarTech 专家提出「数据为王」时代已结束，上下文（Context）正成为新的 refining 要素。没有 refineries，数据只是「有气味的毒物」。营销人员需从数据收集转向情境理解，在对的时间向对的人传递对的信息。</p>
-                    <div class="tags"><span class="tag">MarTech</span><span class="tag">数据策略</span><span class="tag">上下文营销</span><span class="tag">趋势</span></div>
-                    <p class="source">来源：MarTech.org · <a href="https://martech.org/the-era-of-data-dominance-is-over-and-it-didnt-last-very-long/" target="_blank">查看原文</a></p>
-                </div>
+            <div class="news-item">
+                <h3>Expandi 收购 Kompass，打造欧洲最大 B2B 数据+AI 营销平台</h3>
+                <p class="summary">Expandi Limited 宣布 100% 收购全球 B2B 数据巨头 Kompass，合并后将成为欧洲领先的 B2B 数据、媒体和 AI 驱动营销平台。Expandi 以数据驱动的多渠道 B2B 营销见长，Kompass 拥有全球最大的商业数据库之一。此次整合意味着 B2B MarTech 领域的并购整合潮正在加速。</p>
+                <div class="tags"><span class="tag">MarTech</span><span class="tag">并购</span><span class="tag">B2B</span><span class="tag">数据平台</span></div>
+                <p class="source">来源：MarTech Cube / AI Journal · <a href="https://www.martechcube.com/expandi-limited-announced-the-acquisition-of-kompass/" target="_blank">查看原文 →</a></p>
+            </div>
 
-                <div class="news-item">
-                    <h3>自动化是营销获取 AI 投资回报的最快路径</h3>
-                    <p class="summary">最新研究显示，自动化程度与 AI 回报直接相关。没有结构性变革，营销 AI 投入只会放大旧有的低效。从营销自动化入手，将 AI 与销售管道、交易速度和收入增长直接关联，是实现真正 ROI 的务实路径。</p>
-                    <div class="tags"><span class="tag">MarTech</span><span class="tag">AI</span><span class="tag">自动化</span><span class="tag">ROI</span></div>
-                    <p class="source">来源：MarTech.org · <a href="https://martech.org/automation-is-marketings-fastest-path-to-ai-returns/" target="_blank">查看原文</a></p>
-                </div>
+            <div class="news-item">
+                <h3>软银旗下 PayPay 冲刺纳斯达克 IPO，估值剑指 134 亿美元</h3>
+                <p class="summary">日本最大数字钱包 PayPay 正式启动美国 IPO，目标融资 11 亿美元，估值高达 134 亿美元。这将是近年最大规模的日本公司赴美上市。在 Stripe 传出收购 PayPal 的同一时期，PayPay 逆势上市，折射出全球支付科技格局正经历深刻分化：亚洲数字钱包扩张，美国巨头酝酿整合。</p>
+                <div class="tags"><span class="tag">支付科技</span><span class="tag">IPO</span><span class="tag">PayPay</span><span class="tag">软银</span></div>
+                <p class="source">来源：TechFundingNews / Manila Times · <a href="https://techfundingnews.com/paypay-13bn-ipo-nasdaq-softbank/" target="_blank">查看原文 →</a></p>
+            </div>
+
+            <div class="news-item">
+                <h3>BNPL 全球市场预测：2032 年将达 1184.5 亿美元</h3>
+                <p class="summary">最新行业报告显示，全球先买后付（BNPL）市场在灵活支付需求、用户体验升级和商户快速采纳三重驱动下持续高速增长，预计 2032 年市场规模将达 1184.5 亿美元。监管框架完善和数据驱动决策成为关键变量。BNPL 正从消费金融工具演变为电商基础设施的一部分。</p>
+                <div class="tags"><span class="tag">支付科技</span><span class="tag">BNPL</span><span class="tag">市场预测</span><span class="tag">电商</span></div>
+                <p class="source">来源：GlobeNewsWire · <a href="https://www.globenewswire.com/news-release/2026/03/04/3249270/28124/en/Buy-Now-Pay-Later-Global-Forecasts-Report-2026-2032-118-45-Bn-Market-Driven-by-Flexible-Payments-Demand-Enhanced-UX-and-Rapid-Merchant-Adoption.html" target="_blank">查看原文 →</a></p>
             </div>
         </div>
-        
+
         <!-- 深度分析 -->
         <div id="analysis" class="section">
             <h2 class="section-title">深度分析</h2>
-            
+
             <div class="analysis-card">
                 <div class="category">AdTech · 并购</div>
                 <h3>Infillion 连续收购：买下零售数据公司 Catalina 意味着什么</h3>
                 <p class="excerpt">Infillion 收购零售采购数据公司 Catalina，商业数据的战略价值持续攀升。零售媒体、购物者数据与 DSP 的融合正在重塑广告科技的价值链。</p>
                 <div class="meta"><span>2026-02-28</span><span>阅读时长: 6分钟</span></div>
             </div>
-            
+
             <div class="analysis-card">
                 <div class="category">MarTech · AI</div>
                 <h3>AI 发展速度超过客户信任：品牌该如何应对</h3>
                 <p class="excerpt">营销人员竞相部署 AI，但客户信任远未跟上。如何在技术创新与信任建设之间取得平衡，成为2026年品牌战略的核心议题。</p>
                 <div class="meta"><span>2026-02-27</span><span>阅读时长: 8分钟</span></div>
             </div>
-            
+
             <div class="analysis-card">
                 <div class="category">搜索营销</div>
                 <h3>B2B 品牌如何在 GenAI 答案中获得曝光</h3>
@@ -176,20 +483,18 @@
                 <div class="meta"><span>2026-02-27</span><span>阅读时长: 10分钟</span></div>
             </div>
         </div>
-        
-        <!-- 工具测评 -->
+
+        <!-- 工具雷达 -->
         <div id="tools" class="section">
-            <h2 class="section-title">工具测评</h2>
-            
+            <h2 class="section-title">工具雷达</h2>
             <div class="card-grid">
                 <div class="tool-card">
                     <div class="icon">🤖</div>
                     <h3>PubMatic AgenticOS</h3>
                     <p>程序化广告AI代理操作系统，自动优化CTV和移动端投放</p>
                     <div class="rating">★★★★★</div>
-                    <a href="https://www.adexchanger.com/programmatic/pubmatic-is-all-in-on-agentic-ai/" class="btn">了解详情</a>
+                    <a href="https://www.adexchanger.com/programmatic/pubmatic-is-all-in-on-agentic-ai/" class="btn" target="_blank">了解详情</a>
                 </div>
-                
                 <div class="tool-card">
                     <div class="icon">📧</div>
                     <h3>HubSpot</h3>
@@ -197,7 +502,6 @@
                     <div class="rating">★★★★☆</div>
                     <a href="#" class="btn">查看评测</a>
                 </div>
-                
                 <div class="tool-card">
                     <div class="icon">📊</div>
                     <h3>Mixpanel</h3>
@@ -205,7 +509,6 @@
                     <div class="rating">★★★★☆</div>
                     <a href="#" class="btn">查看评测</a>
                 </div>
-                
                 <div class="tool-card">
                     <div class="icon">🎯</div>
                     <h3>Segment</h3>
@@ -213,7 +516,6 @@
                     <div class="rating">★★★★★</div>
                     <a href="#" class="btn">查看评测</a>
                 </div>
-                
                 <div class="tool-card">
                     <div class="icon">💬</div>
                     <h3>Intercom</h3>
@@ -221,7 +523,6 @@
                     <div class="rating">★★★★☆</div>
                     <a href="#" class="btn">查看评测</a>
                 </div>
-                
                 <div class="tool-card">
                     <div class="icon">💳</div>
                     <h3>Stripe</h3>
@@ -231,11 +532,11 @@
                 </div>
             </div>
         </div>
-        
-        <!-- 案例研究 -->
+
+        <!-- 案例解码 -->
         <div id="cases" class="section">
-            <h2 class="section-title">案例研究</h2>
-            
+            <h2 class="section-title">案例解码</h2>
+
             <div class="case-card">
                 <div class="case-header">
                     <h3>瑞幸咖啡：私域运营与会员体系搭建</h3>
@@ -250,7 +551,7 @@
                     <p>私域用户超3000万，月活占比超过40%，复购率提升至35%。</p>
                 </div>
             </div>
-            
+
             <div class="case-card">
                 <div class="case-header">
                     <h3>蕉下：DTC模式下的内容营销</h3>
@@ -265,7 +566,7 @@
                     <p>年GMV突破50亿，小红书笔记超50万篇，品牌搜索指数增长10倍。</p>
                 </div>
             </div>
-            
+
             <div class="case-card">
                 <div class="case-header">
                     <h3>理想汽车：数据驱动的智能营销</h3>
@@ -281,11 +582,11 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- 行业报告 -->
         <div id="reports" class="section">
             <h2 class="section-title">行业报告</h2>
-            
+
             <div class="report-card">
                 <div class="report-icon">📈</div>
                 <div>
@@ -294,7 +595,7 @@
                     <p>涵盖Martech投融资趋势、主要玩家格局、技术成熟度评估。</p>
                 </div>
             </div>
-            
+
             <div class="report-card">
                 <div class="report-icon">📊</div>
                 <div>
@@ -303,7 +604,7 @@
                     <p>全球数字广告支出将达6000亿美元，AI相关投入增速最快。</p>
                 </div>
             </div>
-            
+
             <div class="report-card">
                 <div class="report-icon">🔒</div>
                 <div>
@@ -312,7 +613,7 @@
                     <p>隐私计算技术现状、应用场景、商业化进程全面分析。</p>
                 </div>
             </div>
-            
+
             <div class="report-card">
                 <div class="report-icon">🛒</div>
                 <div>
@@ -321,7 +622,7 @@
                     <p>私域运营方法论、工具选型、典型案例拆解。</p>
                 </div>
             </div>
-            
+
             <div class="report-card">
                 <div class="report-icon">🤖</div>
                 <div>
@@ -331,19 +632,105 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="footer">
-            <p>每日更新 · MarTech Hub © 2026</p>
+            <div class="powered">
+                <span class="ai-dot"></span>
+                <span>Powered by AI · 每日自动更新</span>
+            </div>
+            <p style="margin-top: 8px;">MarTech Hub © 2026</p>
         </div>
     </div>
-    
+
+    <!-- AI 脉搏角标 -->
+    <div class="ai-pulse">
+        <span class="dot"></span>
+        <span>AI POWERED</span>
+    </div>
+
+    <!-- 数据流角标 -->
+    <div class="data-stream" id="dataStream"></div>
+
     <script>
-        function showSection(id) {
+        // ===== 导航切换 =====
+        function showSection(id, btn) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            event.target.classList.add('active');
+            btn.classList.add('active');
         }
+
+        // ===== 星空粒子 =====
+        (function() {
+            const canvas = document.getElementById('starfield');
+            const ctx = canvas.getContext('2d');
+            let stars = [];
+            const STAR_COUNT = 200;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function initStars() {
+                stars = [];
+                for (let i = 0; i < STAR_COUNT; i++) {
+                    stars.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        r: Math.random() * 1.5 + 0.3,
+                        alpha: Math.random(),
+                        delta: (Math.random() - 0.5) * 0.02
+                    });
+                }
+            }
+
+            function drawStars() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                stars.forEach(s => {
+                    s.alpha += s.delta;
+                    if (s.alpha <= 0.1 || s.alpha >= 1) s.delta *= -1;
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(232, 232, 240, ${s.alpha})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(drawStars);
+            }
+
+            // prefers-reduced-motion check
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                resize();
+                initStars();
+                drawStars();
+                window.addEventListener('resize', () => { resize(); initStars(); });
+            }
+        })();
+
+        // ===== 数据流动画 =====
+        (function() {
+            const el = document.getElementById('dataStream');
+            if (!el) return;
+            const chars = '0123456789ABCDEFabcdef.:{}[]←→↑↓∞∑∫≈';
+            const lines = [];
+            for (let i = 0; i < 6; i++) {
+                let line = '';
+                for (let j = 0; j < 20; j++) {
+                    line += chars[Math.floor(Math.random() * chars.length)];
+                }
+                lines.push(line);
+            }
+
+            setInterval(() => {
+                lines.shift();
+                let newLine = '';
+                for (let j = 0; j < 20; j++) {
+                    newLine += chars[Math.floor(Math.random() * chars.length)];
+                }
+                lines.push(newLine);
+                el.textContent = lines.join('\n');
+            }, 400);
+        })();
     </script>
 </body>
 </html>

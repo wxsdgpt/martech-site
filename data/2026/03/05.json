@@ -1,0 +1,52 @@
+{
+  "date": "2026-03-05",
+  "weekday": "星期四",
+  "news": [
+    {
+      "title": "Criteo 正式加入 OpenAI 广告试点，ChatGPT 将成为程序化广告新战场",
+      "summary": "Criteo 宣布加入 OpenAI 在 ChatGPT 上的广告试点项目。作为全球管理超 40 亿美元年媒体支出、服务 1.7 万广告主的 AdTech 巨头，Criteo 将把商业智能和 AI 决策引擎引入对话式 AI 场景。这标志着程序化广告正式从传统网页/App 延伸到生成式 AI 界面，广告行业格局或将因此加速重构。",
+      "tags": ["AdTech", "AI", "Criteo", "ChatGPT"],
+      "source": "MarTech Cube",
+      "url": "https://www.martechcube.com/criteo-joins-openai-advertising-pilot-in-chatgpt/",
+      "category": "daily"
+    },
+    {
+      "title": "Dstillery、Keynes 与 The Trade Desk 联手推进 Agentic 广告投放",
+      "summary": "AI 定向广告公司 Dstillery 发布 DS-1 Agentic 广告平台，CTV 广告技术公司 Keynes 成为首批采用者，The Trade Desk 提供底层程序化支持。DS-1 让媒体买家用 AI 代理作为投放\"副驾驶\"，自动完成受众建模与优化。The Trade Desk 评价这是\"程序化与 Agentic 交汇处的创新终于落地\"。",
+      "tags": ["AdTech", "AI Agent", "程序化广告", "CTV"],
+      "source": "AdExchanger / MarTech Series",
+      "url": "https://www.adexchanger.com/marketers/dstillery-has-a-new-agentic-ai-interface-for-refining-audiences-faster/",
+      "category": "daily"
+    },
+    {
+      "title": "Expandi 收购 Kompass，打造欧洲最大 B2B 数据+AI 营销平台",
+      "summary": "Expandi Limited 宣布 100% 收购全球 B2B 数据巨头 Kompass，合并后将成为欧洲领先的 B2B 数据、媒体和 AI 驱动营销平台。Expandi 以数据驱动的多渠道 B2B 营销见长，Kompass 拥有全球最大的商业数据库之一。此次整合意味着 B2B MarTech 领域的并购整合潮正在加速。",
+      "tags": ["MarTech", "并购", "B2B", "数据平台"],
+      "source": "MarTech Cube / AI Journal",
+      "url": "https://www.martechcube.com/expandi-limited-announced-the-acquisition-of-kompass/",
+      "category": "daily"
+    },
+    {
+      "title": "软银旗下 PayPay 冲刺纳斯达克 IPO，估值剑指 134 亿美元",
+      "summary": "日本最大数字钱包 PayPay 正式启动美国 IPO，目标融资 11 亿美元，估值高达 134 亿美元。这将是近年最大规模的日本公司赴美上市。在 Stripe 传出收购 PayPal 的同一时期，PayPay 逆势上市，折射出全球支付科技格局正经历深刻分化：亚洲数字钱包扩张，美国巨头酝酿整合。",
+      "tags": ["支付科技", "IPO", "PayPay", "软银"],
+      "source": "TechFundingNews / Manila Times",
+      "url": "https://techfundingnews.com/paypay-13bn-ipo-nasdaq-softbank/",
+      "category": "daily"
+    },
+    {
+      "title": "BNPL 全球市场预测报告：2032 年将达 1184.5 亿美元",
+      "summary": "最新行业报告显示，全球先买后付（BNPL）市场在灵活支付需求、用户体验升级和商户快速采纳三重驱动下持续高速增长，预计 2032 年市场规模将达 1184.5 亿美元。监管框架完善和数据驱动决策成为关键变量。BNPL 正从消费金融工具演变为电商基础设施的一部分。",
+      "tags": ["支付科技", "BNPL", "市场预测", "电商"],
+      "source": "GlobeNewsWire",
+      "url": "https://www.globenewswire.com/news-release/2026/03/04/3249270/28124/en/Buy-Now-Pay-Later-Global-Forecasts-Report-2026-2032-118-45-Bn-Market-Driven-by-Flexible-Payments-Demand-Enhanced-UX-and-Rapid-Merchant-Adoption.html",
+      "category": "daily"
+    }
+  ],
+  "analysis": [],
+  "tools": [],
+  "meta": {
+    "updated_at": "2026-03-05T06:37:00+08:00",
+    "version": 1
+  }
+}
