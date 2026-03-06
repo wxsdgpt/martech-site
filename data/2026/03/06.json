@@ -1,0 +1,52 @@
+{
+  "date": "2026-03-06",
+  "weekday": "星期五",
+  "news": [
+    {
+      "title": "Adyen 校友创立的 Silverflow 完成 3700 万欧元 B 轮融资，要用云原生架构颠覆传统支付处理",
+      "summary": "由前 Adyen 高管创办的荷兰支付科技公司 Silverflow 宣布完成 3700 万欧元（约 4000 万美元）B 轮融资，计划将团队扩大 50% 以上。Silverflow 的核心主张是用云原生、API-first 的现代架构取代运行了数十年的传统卡处理系统。目前已获得 Visa 和 Mastercard 的直接收单资质。传统支付处理基础设施的'技术债'正成为行业最大痛点，Silverflow 的出现意味着支付处理层也开始迎来真正的技术代际更替。",
+      "tags": ["支付科技", "融资", "Silverflow", "云原生"],
+      "source": "EU-Startups / Tech Funding News",
+      "url": "https://techfundingnews.com/adyen-alums-silverflow-raises-40m-to-kill-legacy-payments/",
+      "category": "daily"
+    },
+    {
+      "title": "CIO.com 深度：Agentic Payments 时代来临，AI 代理将自主完成支付交易",
+      "summary": "CIO.com 发布深度分析指出，AI 代理（Agentic AI）正在进入支付领域。在'Agentic Payments'模式下，AI 代理可代表用户或企业自主发起、授权和完成支付交易，无需人工干预。这将彻底改变 B2B 采购流程、订阅管理和动态定价场景。但安全授权、责任归属和风控体系尚未跟上。多家银行和支付公司已开始评估风险并制定应对策略。",
+      "tags": ["支付科技", "AI", "Agentic AI", "趋势"],
+      "source": "CIO.com / The Banker",
+      "url": "https://www.cio.com/article/agentic-payments-are-coming/",
+      "category": "daily"
+    },
+    {
+      "title": "瑞典政府建议每位成年公民备存至少 1000 瑞典克朗现金，以防支付系统崩溃",
+      "summary": "瑞典民防局（MSB）发布新指引，建议每位成年公民在家中备存至少 1000 瑞典克朗（约合 650 元人民币）现金，以应对数字支付系统可能出现的大规模故障。作为全球数字支付渗透率最高的国家之一，瑞典此举引发广泛讨论。分析认为，这反映了各国政府对过度依赖数字支付基础设施的深层担忧——支付系统的韧性和容灾设计正成为国家安全议题。",
+      "tags": ["支付科技", "数字支付", "瑞典", "风险管理"],
+      "source": "Computer Weekly",
+      "url": "https://www.computerweekly.com/news/sweden-recommends-cash-reserves",
+      "category": "daily"
+    },
+    {
+      "title": "Tech Mahindra 在 MWC 2026 发布电信行业 Agentic Payment 智能助手解决方案",
+      "summary": "印度 IT 巨头 Tech Mahindra 在巴塞罗那 MWC 2026 大会上发布面向电信行业的 Agentic Payment Assistance & Collections Optimization 解决方案。该方案利用 AI 代理自动处理电信用户的账单查询、支付提醒和催收优化，可显著降低人工客服成本并提升催收回款率。这是'Agentic AI + 支付'在垂直行业的首个大规模落地案例，标志着 AI 代理正从概念走向商业化部署。",
+      "tags": ["MarTech", "AI", "电信", "MWC 2026"],
+      "source": "Mahindra / MWC 2026",
+      "url": "https://www.mahindra.com/news/tech-mahindra-launches-agentic-payment-assistance",
+      "category": "daily"
+    },
+    {
+      "title": "Google 与 Epic Games 和解生效：应用内支付费率大幅下调，开放第三方商店",
+      "summary": "Google 与 Epic Games 的支付反垄断诉讼和解协议正式生效。Google 将显著降低 Play 商店应用内支付手续费，并允许开发者使用第三方支付系统和替代应用商店。韩国开发者将率先受益。此举被视为全球应用生态支付格局的分水岭——Apple 也面临类似压力。对于营销科技行业而言，应用内购买成本的下降将直接影响移动广告 ROI 计算和用户获取策略。",
+      "tags": ["AdTech", "Google", "应用支付", "反垄断"],
+      "source": "Korea JoongAng Daily / GIGAZINE",
+      "url": "https://koreajoongangdaily.joins.com/news/2026-03-05/google-lowers-in-app-payment-fees",
+      "category": "daily"
+    }
+  ],
+  "analysis": [],
+  "tools": [],
+  "meta": {
+    "updated_at": "2026-03-06T09:00:00+08:00",
+    "version": 1
+  }
+}
