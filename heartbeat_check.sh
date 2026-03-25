@@ -1,7 +1,11 @@
 #!/bin/bash
+set -e
 
 # Martech Heartbeat - 每2小时检查一次
 # 检查 GitHub 仓库状态 + 竞品分析
+
+LOG_FILE="$HOME/.openclaw/workspace/mertech-site/heartbeat.log"
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] heartbeat_check.sh 开始运行" >> "$LOG_FILE"
 
 cd ~/.openclaw/workspace/mertech-site || exit 1
 

@@ -1,7 +1,11 @@
 #!/bin/bash
+set -e
 
 # Martech Daily News Bot
 # 每天早上 8 点执行：搜索 Martech/AdTech/支付科技 新闻，更新 index.html，推送到 GitHub
+
+LOG_FILE="$HOME/.openclaw/workspace/mertech-site/martech_daily.log"
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] martech_daily.sh 开始运行" >> "$LOG_FILE"
 
 cd ~/.openclaw/workspace/mertech-site || exit 1
 
@@ -52,3 +56,4 @@ git commit -m "Update: ${DATE}" || exit 0
 git push origin main
 
 echo "Martech daily task completed at ${DATE}"
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] martech_daily.sh 完成" >> "$LOG_FILE"
